@@ -93,7 +93,13 @@ export APACHE_BIN_FOUND=/usr/sbin/apache2ctl
 cd /var/www/OCSNG_UNIX_SERVER-$OCS_VERSION
 echo "y" | sh ./setup.sh
 
+cp /etc/apache2/conf-available/z-ocsinventory-server.conf /etc/apache2/conf-available/z-ocsinventory-server.conf.bkp
 cp /etc/apache2/conf-available/zz-ocsinventory-restapi.conf /etc/apache2/conf-available/zz-ocsinventory-restapi.conf.bkp
+
+OCS_PORT=$(echo $OCS_PORT | cut -d '"' -f2)
+OCS_DB=$(echo $OCS_PORT | cut -d '"' -f2)
+OCS_USER=$(echo $OCS_PORT | cut -d '"' -f2)
+OCS_PASSWORD=$(echo $OCS_PORT | cut -d '"' -f2)
 
 export PTH_ZZ_OCS_RESTAPI=/etc/apache2/conf-available/zz-ocsinventory-restapi.conf
 
@@ -103,12 +109,6 @@ sudo sed -i "s|$ENV{OCS_DB_LOCAL} = 'ocsweb';|$ENV{OCS_DB_LOCAL} = '$OCS_DB';|" 
 sudo sed -i "s|$ENV{OCS_DB_USER} = 'ocs';|$ENV{OCS_DB_USER} = '$OCS_USER';|" $PTH_ZZ_OCS_RESTAPI
 sudo sed -i "s|$ENV{OCS_DB_PWD} = 'ocs';|$ENV{OCS_DB_PWD} = '$OCS_PASSWORD';|" $PTH_ZZ_OCS_RESTAPI
 sudo sed -i "s|$ENV{OCS_DB_SSL_ENABLED} = 0;|$ENV{OCS_DB_SSL_ENABLED} = 0;|" $PTH_ZZ_OCS_RESTAPI
-
-ln -s /etc/apache2/conf-available/ocsinventory-reports.conf /etc/apache2/conf-enabled/ocsinventory-reports.conf
-ln -s /etc/apache2/conf-available/z-ocsinventory-server.conf /etc/apache2/conf-enabled/z-ocsinventory-server.conf
-ln -s /etc/apache2/conf-available/zz-ocsinventory-restapi.conf /etc/apache2/conf-enabled/zz-ocsinventory-restapi.conf
-
-chown -R www-data:www-data /var/lib/ocsinventory-reports
 
 export PTH_Z_OCS=/etc/apache2/conf-available/z-ocsinventory-server.conf
 
@@ -120,10 +120,13 @@ sudo sed -i "s|PerlSetEnv OCS_DB_USER ocs|PerlSetEnv OCS_DB_USER $OCS_USER|" $PT
 sudo sed -i "s|PerlSetVar OCS_DB_PWD ocs|PerlSetVar OCS_DB_PWD $OCS_PASSWORD|" $PTH_Z_OCS
 sudo sed -i "s|PerlSetEnv OCS_OPT_ACCEPT_TAG_UPDATE_FROM_CLIENT 0|PerlSetEnv OCS_OPT_ACCEPT_TAG_UPDATE_FROM_CLIENT 1|" $PTH_Z_OCS
 
+ln -s /etc/apache2/conf-available/ocsinventory-reports.conf /etc/apache2/conf-enabled/ocsinventory-reports.conf
+ln -s /etc/apache2/conf-available/z-ocsinventory-server.conf /etc/apache2/conf-enabled/z-ocsinventory-server.conf
+ln -s /etc/apache2/conf-available/zz-ocsinventory-restapi.conf /etc/apache2/conf-enabled/zz-ocsinventory-restapi.conf
+
 sudo a2enconf ocsinventory-reports
 sudo a2enconf z-ocsinventory-server
-chown -R www-data:www-data /var/lib/ocsinventory-reports/
-
+chown -R www-data:www-data /var/lib/ocsinventory-reports
 systemctl restart apache2
 
 echo
