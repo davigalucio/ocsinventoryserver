@@ -120,6 +120,10 @@ sudo sed -i "s|PerlSetEnv OCS_DB_USER ocs|PerlSetEnv OCS_DB_USER $OCS_USER|" $PT
 sudo sed -i "s|PerlSetVar OCS_DB_PWD ocs|PerlSetVar OCS_DB_PWD $OCS_PASSWORD|" $PTH_Z_OCS
 sudo sed -i "s|PerlSetEnv OCS_OPT_ACCEPT_TAG_UPDATE_FROM_CLIENT 0|PerlSetEnv OCS_OPT_ACCEPT_TAG_UPDATE_FROM_CLIENT 1|" $PTH_Z_OCS
 
+sudo a2enconf ocsinventory-reports
+sudo a2enconf z-ocsinventory-server
+chown -R www-data:www-data /var/lib/ocsinventory-reports/
+
 systemctl restart apache2
 
 echo
