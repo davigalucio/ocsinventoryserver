@@ -121,3 +121,21 @@ sudo sed -i "s|PerlSetVar OCS_DB_PWD ocs|PerlSetVar OCS_DB_PWD $OCS_PASSWORD|" $
 sudo sed -i "s|PerlSetEnv OCS_OPT_ACCEPT_TAG_UPDATE_FROM_CLIENT 0|PerlSetEnv OCS_OPT_ACCEPT_TAG_UPDATE_FROM_CLIENT 1|" $PTH_Z_OCS
 
 systemctl restart apache2
+
+echo
+echo "Instalação Concluída"
+echo
+echo "Acesse via broswer http://$HOST_IP/ocsreports"
+echo
+echo "Informe os dados configurados na instalação:"
+echo
+echo "Usuário Mysql: $OCS_USER"
+echo "Senha Mysql: $OCS_PASSWORD"
+echo "Nome da base de dados: $OCS_DB"
+echo "Servidor Mysql: localhost"
+echo "Porta MySQL : 3306"
+echo "Habilitar SSL: Não"
+echo
+echo
+echo "Mais informações, acesse: https://github.com/davigalucio/ocsinventoryserver"
+echo
