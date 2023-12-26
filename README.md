@@ -6,6 +6,8 @@ git clone https://github.com/davigalucio/ocsinventoryserver.git
 
 sh ocsinventoryserver/INSTALL.SH
 
+
+
 1. Após a instalação, acesse via broswer http://IP_DO_HOST/ocsreports para concluir a configuração:
 
 Usuário Mysql: ocs_user
