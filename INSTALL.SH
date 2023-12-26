@@ -97,9 +97,10 @@ cp /etc/apache2/conf-available/z-ocsinventory-server.conf /etc/apache2/conf-avai
 cp /etc/apache2/conf-available/zz-ocsinventory-restapi.conf /etc/apache2/conf-available/zz-ocsinventory-restapi.conf.bkp
 
 OCS_PORT=$(echo $OCS_PORT | cut -d '"' -f2)
-OCS_DB=$(echo $OCS_PORT | cut -d '"' -f2)
-OCS_USER=$(echo $OCS_PORT | cut -d '"' -f2)
-OCS_PASSWORD=$(echo $OCS_PORT | cut -d '"' -f2)
+OCS_DB=$(echo $OCS_DB | cut -d '"' -f2)
+OCS_USER=$(echo $OCS_USER | cut -d '"' -f2)
+OCS_PASSWORD=$(echo $OCS_PASSWORD | cut -d '"' -f2)
+
 
 export PTH_ZZ_OCS_RESTAPI=/etc/apache2/conf-available/zz-ocsinventory-restapi.conf
 
