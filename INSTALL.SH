@@ -106,6 +106,7 @@ export PTH_ZZ_OCS_RESTAPI=/etc/apache2/conf-available/zz-ocsinventory-restapi.co
 
 sudo sed -i "s|$ENV{OCS_DB_HOST} = 'localhost';;|$ENV{OCS_DB_HOST} = 'localhost';|" $PTH_ZZ_OCS_RESTAPI
 sudo sed -i "s|$ENV{OCS_DB_PORT} = '3306';|$ENV{OCS_DB_PORT} = '$OCS_PORT';|" $PTH_ZZ_OCS_RESTAPI
+sudo sed -i "s|$ENV{OCS_DB_NAME} = 'ocsweb';|$ENV{OCS_DB_LOCAL} = '$OCS_DB';|" $PTH_ZZ_OCS_RESTAPI
 sudo sed -i "s|$ENV{OCS_DB_LOCAL} = 'ocsweb';|$ENV{OCS_DB_LOCAL} = '$OCS_DB';|" $PTH_ZZ_OCS_RESTAPI
 sudo sed -i "s|$ENV{OCS_DB_USER} = 'ocs';|$ENV{OCS_DB_USER} = '$OCS_USER';|" $PTH_ZZ_OCS_RESTAPI
 sudo sed -i "s|$ENV{OCS_DB_PWD} = 'ocs';|$ENV{OCS_DB_PWD} = '$OCS_PASSWORD';|" $PTH_ZZ_OCS_RESTAPI
