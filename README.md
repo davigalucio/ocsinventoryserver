@@ -9,10 +9,15 @@ sh ocsinventoryserver/INSTALL.SH
 1. Após a instalação, acesse via broswer http://IP_DO_HOST/ocsreports para concluir a configuração:
 
 Usuário Mysql: ocs_user
+
 Senha Mysql: ocs_password
+
 Nome da base de dados: ocs_db
+
 Servidor Mysql: localhost
+
 Porta MySQL : 3306
+
 Habilitar SSL: Não
 
 2. Clique em:
@@ -34,6 +39,7 @@ Habilitar SSL: Não
 6. Seleciona a linguagem de sua preferência:
 
 usuário: admin
+
 senha: admin
 
 7. Depois retorne ao terminal e digite:
