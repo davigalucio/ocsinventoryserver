@@ -1,12 +1,12 @@
+OCS_VERSION=2.12.0
+OCS_AGENT_VERSION=2.10.0
+
 OCS_DB='"ocs_db"'
 OCS_PORT='"3306"'
 OCS_USER='"ocs_user"'
 OCS_PASSWORD='"ocs_password"'
 
 HOST_IP=$(hostname -I | head -n1 | cut -f1 -d' ')
-
-OCS_VERSION=2.12.0
-OCS_AGENT_VERSION=2.10.0
 
 apt -y install git curl perl wget make cmake gcc perl unzip sudo 
 
